@@ -13,7 +13,7 @@ usage unless (idx = ARGV[1].index ':')
 local = File.realdirpath File.expand_path ARGV[0]
 host, path = ARGV[1][0,idx], ARGV[1][idx+1..-1]
 remote = `ssh #{host} 'readlink #{path}'`.strip
-ignore = [%r{tmp/}, /\.(ya?ml|sql|log|tmp)$/]
+ignore = [%r{tmp/}, %r{database.yml}, /\.(sql|log|tmp)$/]
 
 puts "Sync: #{local} -> #{host}:#{remote}"
 
